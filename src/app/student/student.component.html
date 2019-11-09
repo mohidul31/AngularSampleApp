@@ -1,6 +1,8 @@
 <h4>Student List!</h4>
+<input type="text" #newStudent>
+<button (click)="AddStudent(newStudent)">Add Student</button>
 <ul>
     <li *ngFor="let user of userList">
-        {{user.name}}
+        {{user.name}}   <button (click)="DeleteStudent(user)">Delete Student</button>
     </li>
 </ul>
