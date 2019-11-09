@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-student',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-
-  constructor() { }
+  userList: any[];
+  constructor(private h:Http) { 
+    
+  }
 
   ngOnInit() {
+    this.h.get('https://jsonplaceholder.typicode.com/users')
+    .subscribe(r=> {
+      this.userList=r.json();
+      //console.log(r.json());
+    })
   }
 
 }
